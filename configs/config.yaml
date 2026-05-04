@@ -1,0 +1,12 @@
+app:
+  name: EM Subscription Manager
+  port: 3000
+
+postgres:
+  dsn: postgres://postgres:postgres@db:5432/subscriptions?sslmode=disable
+
+logger:
+  level: info
+
+swagger:
+  enabled: true
