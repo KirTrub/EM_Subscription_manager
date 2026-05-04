@@ -2,12 +2,12 @@ basePath: /
 definitions:
   dto.CreateSubscriptionDTO:
     properties:
-      Service_name:
-        type: string
       end_date:
         type: string
       price:
         type: integer
+      service_name:
+        type: string
       start_date:
         type: string
       user_id:
@@ -20,12 +20,12 @@ definitions:
     type: object
   dto.UpdateSubscriptionDTO:
     properties:
-      Service_name:
-        type: string
       end_date:
         type: string
       price:
         type: integer
+      service_name:
+        type: string
       start_date:
         type: string
       user_id:
@@ -33,14 +33,14 @@ definitions:
     type: object
   models.Subscription:
     properties:
-      ServiceName:
-        type: string
       end_date:
         type: string
       id:
         type: integer
       price:
         type: integer
+      service_name:
+        type: string
       start_date:
         type: string
       user_id:
@@ -182,7 +182,7 @@ paths:
   /subscriptions/summary:
     get:
       parameters:
-      - description: User ID
+      - description: User ID (UUID)
         in: query
         name: user_id
         required: true
@@ -190,14 +190,13 @@ paths:
       - description: Service name
         in: query
         name: service_name
-        required: true
         type: string
-      - description: Start date RFC3339
+      - description: Start date (MM-YYYY)
         in: query
         name: start_date
         required: true
         type: string
-      - description: End date RFC3339
+      - description: End date (MM-YYYY)
         in: query
         name: end_date
         required: true
@@ -211,10 +210,6 @@ paths:
             additionalProperties:
               type: integer
             type: object
-        "400":
-          description: Bad Request
-          schema:
-            $ref: '#/definitions/dto.ErrorResponse'
       summary: Get subscriptions summary
       tags:
       - subscriptions

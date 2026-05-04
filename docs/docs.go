@@ -98,7 +98,7 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "User ID",
+                        "description": "User ID (UUID)",
                         "name": "user_id",
                         "in": "query",
                         "required": true
@@ -107,19 +107,18 @@ const docTemplate = `{
                         "type": "string",
                         "description": "Service name",
                         "name": "service_name",
-                        "in": "query",
-                        "required": true
+                        "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "Start date RFC3339",
+                        "description": "Start date (MM-YYYY)",
                         "name": "start_date",
                         "in": "query",
                         "required": true
                     },
                     {
                         "type": "string",
-                        "description": "End date RFC3339",
+                        "description": "End date (MM-YYYY)",
                         "name": "end_date",
                         "in": "query",
                         "required": true
@@ -133,12 +132,6 @@ const docTemplate = `{
                             "additionalProperties": {
                                 "type": "integer"
                             }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "schema": {
-                            "$ref": "#/definitions/dto.ErrorResponse"
                         }
                     }
                 }
@@ -271,14 +264,14 @@ const docTemplate = `{
         "dto.CreateSubscriptionDTO": {
             "type": "object",
             "properties": {
-                "Service_name": {
-                    "type": "string"
-                },
                 "end_date": {
                     "type": "string"
                 },
                 "price": {
                     "type": "integer"
+                },
+                "service_name": {
+                    "type": "string"
                 },
                 "start_date": {
                     "type": "string"
@@ -299,14 +292,14 @@ const docTemplate = `{
         "dto.UpdateSubscriptionDTO": {
             "type": "object",
             "properties": {
-                "Service_name": {
-                    "type": "string"
-                },
                 "end_date": {
                     "type": "string"
                 },
                 "price": {
                     "type": "integer"
+                },
+                "service_name": {
+                    "type": "string"
                 },
                 "start_date": {
                     "type": "string"
@@ -319,9 +312,6 @@ const docTemplate = `{
         "models.Subscription": {
             "type": "object",
             "properties": {
-                "ServiceName": {
-                    "type": "string"
-                },
                 "end_date": {
                     "type": "string"
                 },
@@ -330,6 +320,9 @@ const docTemplate = `{
                 },
                 "price": {
                     "type": "integer"
+                },
+                "service_name": {
+                    "type": "string"
                 },
                 "start_date": {
                     "type": "string"
